@@ -1,10 +1,15 @@
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import Main from './Components/Main/Main';
 import './assets/styles/main.sass';
 
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
   );
 }
 
