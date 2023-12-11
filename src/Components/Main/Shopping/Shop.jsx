@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import "./shop.sass"
+import Dotdotdot from "react-dotdotdot";
 
 export default function Shop() {
-    const [objects , setObjects] = useState([])
-    const [loading , setLoading] = useState(true)
+    const [objects, setObjects] = useState([])
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         async function FetchThings() {
             try {
                 const response = await fetch('https://fakestoreapi.com/products')
                 const json = await response.json();
-                setObjects(prevObjs => [...prevObjs , ...json.slice(0, 20)])
+                setObjects(prevObjs => [...prevObjs, ...json.slice(0, 20)])
                 setLoading(false)
             } catch (error) {
                 throw new Error(error)
@@ -27,7 +28,7 @@ export default function Shop() {
             <Header />
             <main>
                 {!loading && (
-                    objects.map((item , index) => {
+                    objects.map((item, index) => {
                         const { id, title, image, description, price } = item;
                         return (
                             <div className={`item ${id}`} key={`${title} , ${index}`}>
@@ -35,9 +36,11 @@ export default function Shop() {
                                 <div className="titleWrap">
                                     <h3>{title}</h3>
                                 </div>
-                                <div className="descWrap">
-                                    <p>{description}</p>
-                                </div>
+                                <Dotdotdot clamp={5}>
+                                    <div className="descWrap">
+                                        <p>{description}</p>
+                                    </div>
+                                </Dotdotdot>
                                 <h3>${price}</h3>
                                 <div className="buttonWrap">
                                     <label>Quantity
