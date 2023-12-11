@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import "./shop.sass"
-import Dotdotdot from "react-dotdotdot";
 
 export default function Shop() {
     const [objects, setObjects] = useState([])
@@ -18,7 +17,6 @@ export default function Shop() {
                 throw new Error(error)
             }
         }
-        console.log(objects.length)
         if (objects.length === 0) {
             FetchThings()
         }
@@ -36,18 +34,7 @@ export default function Shop() {
                                 <div className="titleWrap">
                                     <h3>{title}</h3>
                                 </div>
-                                <Dotdotdot clamp={5}>
-                                    <div className="descWrap">
-                                        <p>{description}</p>
-                                    </div>
-                                </Dotdotdot>
                                 <h3>${price}</h3>
-                                <div className="buttonWrap">
-                                    <label>Quantity
-                                        <input type="number" value="0"></input>
-                                    </label>
-                                    <button>Add to Cart</button>
-                                </div>
                             </div>
                         );
                     })
