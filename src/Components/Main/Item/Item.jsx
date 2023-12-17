@@ -23,6 +23,8 @@ export default function Item() {
         }
         FetchItem();
     } , [])
+
+    const { iid, title, image, description, price } = item;
     return (
         <>
             {loading
@@ -34,6 +36,12 @@ export default function Item() {
                     <img src={Back} height="50px" width="50px" 
                     style={{cursor: "pointer",position: "absolute"}} 
                     onClick={() => navigate(-1)}></img>
+                    <main>
+                        <img src={image} height="290px" width="290px" alt={`${title}`}></img>
+                        <h2>{title}</h2>
+                        <p>{description}</p>
+                        <h3>${price}</h3>
+                    </main>
                     <Footer />
                 </>}
 
