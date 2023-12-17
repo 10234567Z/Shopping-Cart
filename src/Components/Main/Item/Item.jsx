@@ -3,6 +3,7 @@ import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import { useEffect, useState } from "react";
 import Back from "./Assets/back.svg"
+import styles from "./item.module.sass"
 
 export default function Item() {
 
@@ -36,11 +37,14 @@ export default function Item() {
                     <img src={Back} height="50px" width="50px" 
                     style={{cursor: "pointer",position: "absolute"}} 
                     onClick={() => navigate(-1)}></img>
-                    <main>
-                        <img src={image} height="290px" width="290px" alt={`${title}`}></img>
+                    <main className={styles.main}>
+                        <img src={image} height="290px" width="290px" alt={`${title}`} className={styles.img}></img>
                         <h2>{title}</h2>
                         <p>{description}</p>
                         <h3>${price}</h3>
+                        <div className="buttonWrapper">
+                            <button>Add To Cart</button>
+                        </div>
                     </main>
                     <Footer />
                 </>}
