@@ -8,9 +8,12 @@ export default function Header() {
             <Link to='/home' className='headLink'>
                 <h1>F Store</h1>
             </Link>
-            <Link to='/cart'>
-                <img src={Cart} width="50px" height="50px" />
-            </Link>
+            <div className="cartWrap">
+                <Link to='/cart'>
+                    <img src={Cart} width="50px" height="50px" />
+                </Link>
+                <p></p>
+            </div>
         </header>
     )
 }
