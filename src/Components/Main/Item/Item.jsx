@@ -42,7 +42,7 @@ export default function Item() {
                         <h2>{title}</h2>
                         <p>{description}</p>
                         <h3>${price}</h3>
-                        <div className="buttonWrapper">
+                        <div className={styles.btn}>
                             <button>Add To Cart</button>
                         </div>
                     </main>

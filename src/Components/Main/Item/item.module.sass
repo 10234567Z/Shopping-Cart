@@ -20,6 +20,17 @@
 .img
     transition: transform 0.4s linear
 
+.btn > button
+    background-color: black
+    padding: 15px
+    font-size: 1.4rem
+    border-radius: 6px
+    color: white
+    transition: all 0.2s linear
+
 @media (hover: hover)
+    .btn > button:hover
+        background-color: rgba(0,0,0,0.7)
+        cursor: pointer
     .img:hover
         transform: scale(1.2)
