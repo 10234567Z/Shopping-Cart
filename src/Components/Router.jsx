@@ -24,7 +24,7 @@ export default function Router() {
             element: <Shop />
         },
         {
-            path: '/shop/:name',
+            path: '/shop/:id/:name',
             element: <Item />
         },
     ])
