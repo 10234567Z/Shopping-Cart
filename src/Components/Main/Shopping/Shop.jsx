@@ -30,7 +30,7 @@ export default function Shop() {
                     objects.map((item, index) => {
                         const { id, title, image, description, price } = item;
                         return (
-                            <Link to={`/shop/${title.replace(/\s/g,"-")}`} key={`${title} , ${index}`} style={{textDecoration: "none"}}>
+                            <Link to={`/shop/${title.replace(/\s/g,"&")}&${id}`} key={`${title} , ${index}`} style={{textDecoration: "none"}}>
                                 <div className={`item ${id}`}>
                                     <img src={image} height="250px" width="250px"></img>
                                     <div className="titleWrap">
