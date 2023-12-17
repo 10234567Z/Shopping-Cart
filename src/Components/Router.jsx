@@ -3,6 +3,7 @@ import Cart from "./Main/Cart/Cart";
 import Shop from "./Main/Shopping/Shop";
 import App from "../App";
 import Redirect from "./Redirect";
+import Item from "./Main/Item/Item";
 
 export default function Router() {
     const router = createBrowserRouter([
@@ -21,7 +22,11 @@ export default function Router() {
         {
             path: '/shop',
             element: <Shop />
-        }
+        },
+        {
+            path: '/shop/:name',
+            element: <Item />
+        },
     ])
 
     return (

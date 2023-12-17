@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import "./shop.sass"
+import { Link } from "react-router-dom";
 
 export default function Shop() {
     const [objects, setObjects] = useState([])
@@ -29,13 +30,15 @@ export default function Shop() {
                     objects.map((item, index) => {
                         const { id, title, image, description, price } = item;
                         return (
-                            <div className={`item ${id}`} key={`${title} , ${index}`}>
-                                <img src={image} height="250px" width="250px"></img>
-                                <div className="titleWrap">
-                                    <h3>{title}</h3>
+                            <Link to={`/shop/${title.replace(/\s/g,"-")}`} key={`${title} , ${index}`} style={{textDecoration: "none"}}>
+                                <div className={`item ${id}`}>
+                                    <img src={image} height="250px" width="250px"></img>
+                                    <div className="titleWrap">
+                                        <h3>{title}</h3>
+                                    </div>
+                                    <h3>${price}</h3>
                                 </div>
-                                <h3>${price}</h3>
-                            </div>
+                            </Link>
                         );
                     })
                 )}
