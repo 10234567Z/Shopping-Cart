@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import "./shop.sass"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Shop() {
     const [objects, setObjects] = useState([])
     const [loading, setLoading] = useState(true)
+    const location = useLocation();
     useEffect(() => {
         async function FetchThings() {
             try {
@@ -24,13 +25,13 @@ export default function Shop() {
     }, [])
     return (
         <>
-            <Header />
+            <Header count={location.state}/>
             <main>
                 {!loading && (
                     objects.map((item, index) => {
                         const { id, title, image, description, price } = item;
                         return (
-                            <Link to={`/shop/${id}/${title.replace(/\s/g,"&")}`} key={`${title} , ${index}`} style={{textDecoration: "none"}}>
+                            <Link state={location.state} to={`/shop/${id}/${title.replace(/\s/g,"&")}`} key={`${title} , ${index}`} style={{textDecoration: "none"}}>
                                 <div className={`item ${id}`}>
                                     <img src={image} height="250px" width="250px"></img>
                                     <div className="titleWrap">

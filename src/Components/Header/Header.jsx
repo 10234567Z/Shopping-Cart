@@ -2,17 +2,17 @@ import './header.sass'
 import Cart from './cart-outline.svg'
 import { Link } from 'react-router-dom'
 
-export default function Header() {
+export default function Header({count}) {
     return (
         <header>
-            <Link to='/home' className='headLink'>
+            <Link state={count} to='/home' className='headLink'>
                 <h1>F Store</h1>
             </Link>
             <div className="cartWrap">
-                <Link to='/cart'>
+                <Link state={count} to='/cart'>
                     <img src={Cart} width="50px" height="50px" />
                 </Link>
-                <p></p>
+                <p>{count}</p>
             </div>
         </header>
     )
