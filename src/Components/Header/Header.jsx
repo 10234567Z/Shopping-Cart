@@ -12,7 +12,7 @@ export default function Header({count}) {
                 <Link state={count} to='/cart'>
                     <img src={Cart} width="50px" height="50px" />
                 </Link>
-                <p>{count}</p>
+                <p>{count > 99 ? "99+" : count}</p>
             </div>
         </header>
     )
