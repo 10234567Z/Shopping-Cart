@@ -1,4 +1,4 @@
-import { useParams , useNavigate, useLocation} from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import { useEffect, useState } from "react";
@@ -10,8 +10,8 @@ export default function Item() {
     const { id, name } = useParams()
     const [loading, setLoading] = useState(true)
     const [item, SetItem] = useState('')
-    const [count , setCount] = useState(location.state.cartCount)
-    const [quantity , setQuantity] = useState(1)
+    const [count, setCount] = useState(location.state.cartCount)
+    const [quantity, setQuantity] = useState(1)
     let navigate = useNavigate()
     useEffect(() => {
         async function FetchItem() {
@@ -25,20 +25,21 @@ export default function Item() {
             }
         }
         FetchItem();
-    } , [])
+    }, [])
 
-    const { iid, title, image, description, price } = item;
+    const { category, description, image, price, rating, title } = item;
+    console.log(location.state.cart.find((e) => e.id === +id))
     return (
         <>
             {loading
                 ?
-                <p>Loading...</p> 
+                <p>Loading...</p>
                 :
                 <>
-                    <Header count={count} cart={location.state.cart}/>
+                    <Header count={count} cart={location.state.cart} />
                     <img src={Back} height="50px" width="50px"
-                    style={{cursor: "pointer",position: "absolute"}} 
-                    onClick={() => navigate('/shop' , { state : {cartCount: location.state.cartCount , cart: location.state.cart}})}></img>
+                        style={{ cursor: "pointer", position: "absolute" }}
+                        onClick={() => navigate('/shop', { state: { cartCount: location.state.cartCount, cart: location.state.cart } })}></img>
                     <main className={styles.main}>
                         <img src={image} height="290px" width="290px" alt={`${title}`} className={styles.img}></img>
                         <h2>{title}</h2>
@@ -47,9 +48,14 @@ export default function Item() {
                         <div className={styles.btn}>
                             <input className={styles.inp} type="number" min={1} max={25} onChange={(e) => setQuantity(+e.target.value)} value={quantity}></input>
                             <button onClick={() => {
-                                location.state.cartCount += quantity;
-                                location.state.cart.push(item)
-                                setCount(location.state.cartCount)
+                                if (location.state.cart.find((e) => e.id === +id) === undefined) {
+                                    location.state.cart.push(item)
+                                    location.state.cartCount += quantity
+                                    setCount(location.state.cartCount)
+                                }
+                                else {
+                                    alert("Nope")
+                                }
                             }}>Add To Cart</button>
                         </div>
                     </main>

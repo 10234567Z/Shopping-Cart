@@ -3,7 +3,6 @@ import Cart from './cart-outline.svg'
 import { Link } from 'react-router-dom'
 
 export default function Header({ count , cart }) {
-    console.log(cart)
     return (
         <header>
             <Link state={{ cartCount: count , cart: cart }} to='/home' className='headLink'>
