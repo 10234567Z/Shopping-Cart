@@ -25,13 +25,13 @@ export default function Shop() {
     }, [])
     return (
         <>
-            <Header count={location.state}/>
+            <Header count={location.state.cartCount}/>
             <main>
                 {!loading && (
                     objects.map((item, index) => {
                         const { id, title, image, description, price } = item;
                         return (
-                            <Link state={location.state} to={`/shop/${id}/${title.replace(/\s/g,"&")}`} key={`${title} , ${index}`} style={{textDecoration: "none"}}>
+                            <Link state={{cartCount: location.state.cartCount}} to={`/shop/${id}/${title.replace(/\s/g,"&")}`} key={`${title} , ${index}`} style={{textDecoration: "none"}}>
                                 <div className={`item ${id}`}>
                                     <img src={image} height="250px" width="250px"></img>
                                     <div className="titleWrap">

@@ -10,7 +10,7 @@ function App() {
   const location = useLocation();
   useEffect(() => {
     if(location.state !== null){
-      setCount(location.state)
+      setCount(location.state.cartCount)
     }
   } , [])
   return (

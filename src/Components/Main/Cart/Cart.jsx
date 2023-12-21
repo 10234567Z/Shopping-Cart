@@ -7,7 +7,7 @@ export default function Cart() {
     const location = useLocation();
     return (
         <>
-            <Header count={location.state} />
+            <Header count={location.state.cartCount} />
             <main>
                 
             </main>

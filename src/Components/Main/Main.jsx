@@ -10,7 +10,7 @@ export default function Main({count}) {
     return (
         <main className={styles.main}>
             <div className={styles.div}>Welcome to the Clothing HUB</div>
-            <Link state={count} to='/shop' className={styles.link}>
+            <Link state={{cartCount: count}} to='/shop' className={styles.link}>
                 <button className={styles.btn}>Shop Here</button>
             </Link>
         </main>

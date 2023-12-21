@@ -10,7 +10,7 @@ export default function Item() {
     const { id, name } = useParams()
     const [loading, setLoading] = useState(true)
     const [item, SetItem] = useState('')
-    const [count , setCount] = useState(location.state)
+    const [count , setCount] = useState(location.state.cartCount)
     const [quantity , setQuantity] = useState(1)
     let navigate = useNavigate()
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function Item() {
                     <Header count={count}/>
                     <img src={Back} height="50px" width="50px" 
                     style={{cursor: "pointer",position: "absolute"}} 
-                    onClick={() => navigate('/shop' , { state : location.state})}></img>
+                    onClick={() => navigate('/shop' , { state : {cartCount: location.state.cartCount}})}></img>
                     <main className={styles.main}>
                         <img src={image} height="290px" width="290px" alt={`${title}`} className={styles.img}></img>
                         <h2>{title}</h2>
@@ -47,8 +47,8 @@ export default function Item() {
                         <div className={styles.btn}>
                             <input className={styles.inp} type="number" min={1} max={25} onChange={(e) => setQuantity(+e.target.value)} value={quantity}></input>
                             <button onClick={() => {
-                                location.state += quantity;
-                                setCount(location.state)
+                                location.state.cartCount += quantity;
+                                setCount(location.state.cartCount)
                             }}>Add To Cart</button>
                         </div>
                     </main>
