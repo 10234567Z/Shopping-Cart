@@ -28,7 +28,6 @@ export default function Item() {
     }, [])
 
     const { category, description, image, price, rating, title } = item;
-    console.log(location.state.cart.find((e) => e.id === +id))
     return (
         <>
             {loading

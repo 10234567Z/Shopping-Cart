@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Main({count , cart}) {
     const location = useLocation();
     if(location.state !== null){
-        console.log(location)
+        //..
     }
     return (
         <main className={styles.main}>
