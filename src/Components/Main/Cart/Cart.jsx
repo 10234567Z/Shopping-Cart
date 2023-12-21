@@ -18,6 +18,7 @@ export default function Cart() {
                         <h3>${el.price}</h3>
                         <h4>Quantity: {el.quantity}</h4>
                         <button onClick={() => {
+                            location.state.cartCount -= el.quantity;
                             location.state.cart.splice(location.state.cart.findIndex((it) => it.id === el.id) , 1)
                             setReload(Math.random())
                         }}>Remove</button>
