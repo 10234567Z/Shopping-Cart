@@ -7,16 +7,18 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [count , setCount] = useState(0)
+  const [cart , setCart] = useState([])
   const location = useLocation();
   useEffect(() => {
     if(location.state !== null){
       setCount(location.state.cartCount)
+      setCart(location.state.cart)
     }
   } , [])
   return (
     <>
-      <Header count={count} />
-      <Main count={count} />
+      <Header count={count} cart={cart} />
+      <Main count={count} cart={cart}/>
       <Footer />
     </>
   );

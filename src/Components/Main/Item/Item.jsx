@@ -35,10 +35,10 @@ export default function Item() {
                 <p>Loading...</p> 
                 :
                 <>
-                    <Header count={count}/>
-                    <img src={Back} height="50px" width="50px" 
+                    <Header count={count} cart={location.state.cart}/>
+                    <img src={Back} height="50px" width="50px"
                     style={{cursor: "pointer",position: "absolute"}} 
-                    onClick={() => navigate('/shop' , { state : {cartCount: location.state.cartCount}})}></img>
+                    onClick={() => navigate('/shop' , { state : {cartCount: location.state.cartCount , cart: location.state.cart}})}></img>
                     <main className={styles.main}>
                         <img src={image} height="290px" width="290px" alt={`${title}`} className={styles.img}></img>
                         <h2>{title}</h2>
@@ -48,6 +48,7 @@ export default function Item() {
                             <input className={styles.inp} type="number" min={1} max={25} onChange={(e) => setQuantity(+e.target.value)} value={quantity}></input>
                             <button onClick={() => {
                                 location.state.cartCount += quantity;
+                                location.state.cart.push(item)
                                 setCount(location.state.cartCount)
                             }}>Add To Cart</button>
                         </div>
