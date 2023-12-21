@@ -1,14 +1,14 @@
 import { useLocation } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
-import "./cart.sass"
+import styles from "./cart.module.sass"
 
 export default function Cart() {
     const location = useLocation();
     return (
         <>
             <Header count={location.state.cartCount} cart={location.state.cart} />
-            <main>
+            <main className={styles.main}>
                 {location.state.cart.map((el) => (
                     <div className={`item ${el.id}`} key={`item ${el.id}`}>
                         <img src={el.image} width="200px" height="200px"></img>
