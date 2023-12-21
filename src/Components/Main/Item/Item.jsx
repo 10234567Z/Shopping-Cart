@@ -48,6 +48,7 @@ export default function Item() {
                             <input className={styles.inp} type="number" min={1} max={25} onChange={(e) => setQuantity(+e.target.value)} value={quantity}></input>
                             <button onClick={() => {
                                 if (location.state.cart.find((e) => e.id === +id) === undefined) {
+                                    item.quantity = quantity;
                                     location.state.cart.push(item)
                                     location.state.cartCount += quantity
                                     setCount(location.state.cartCount)

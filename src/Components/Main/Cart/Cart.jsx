@@ -9,7 +9,15 @@ export default function Cart() {
         <>
             <Header count={location.state.cartCount} cart={location.state.cart} />
             <main>
-                
+                {location.state.cart.map((el) => (
+                    <div className={`item ${el.id}`} key={`item ${el.id}`}>
+                        <img src={el.image} width="200px" height="200px"></img>
+                        <h1>{el.title}</h1>
+                        <h3>{el.price}</h3>
+                        <h4>Quantity: {el.quantity}</h4>
+                        <button>Remove</button>
+                    </div>
+                ))}
             </main>
             <Footer />
         </>
