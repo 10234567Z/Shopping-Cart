@@ -14,6 +14,7 @@ export default function Item() {
     const [count, setCount] = useState(location.state.cartCount)
     const [quantity, setQuantity] = useState(1)
     const [popup, setPopup] = useState(false)
+    const [limit , setPLimit] = useState(false)
     const progress = new Progress({
         height: 5,
         color: '#33eafd',
@@ -50,6 +51,12 @@ export default function Item() {
                             setPopup(false)
                         }}>okay</button>
                     </div>
+                    <div className={`${styles.popup} ${limit && styles.show} ${styles.btn}`}>
+                        <h1>Quantity range is 1-25</h1>
+                        <button onClick={() => {
+                            setPLimit(false)
+                        }}>okay</button>
+                    </div>
                     <main className={styles.main}>
                         <img src={image} height="290px" width="290px" alt={`${title}`} className={styles.img}></img>
                         <h2>{title}</h2>
@@ -59,10 +66,15 @@ export default function Item() {
                             <input className={styles.inp} type="number" min={1} max={25} onChange={(e) => setQuantity(+e.target.value)} value={quantity}></input>
                             <button onClick={() => {
                                 if (location.state.cart.find((e) => e.id === +id) === undefined) {
-                                    item.quantity = quantity;
-                                    location.state.cart.push(item)
-                                    location.state.cartCount += quantity
-                                    setCount(location.state.cartCount)
+                                    if(quantity > 0 && quantity <= 25){
+                                        item.quantity = quantity;
+                                        location.state.cart.push(item)
+                                        location.state.cartCount += quantity
+                                        setCount(location.state.cartCount)
+                                    }
+                                    else{
+                                        setPLimit(true)
+                                    }
                                 }
                                 else {
                                     setPopup(true)
