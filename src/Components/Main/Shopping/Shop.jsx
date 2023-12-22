@@ -2,14 +2,20 @@ import { useEffect, useState } from "react";
 import Footer from "../../Footer/Footer";
 import Header from "../../Header/Header";
 import "./shop.sass"
+import { Progress } from "rsup-progress";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Shop() {
     const [objects, setObjects] = useState([])
     const [loading, setLoading] = useState(true)
     const location = useLocation();
+    const progress = new Progress({
+        height: 5,
+        color: '#33eafd',
+    })
     useEffect(() => {
         async function FetchThings() {
+            progress.start()
             try {
                 const response = await fetch('https://fakestoreapi.com/products')
                 const json = await response.json();
@@ -18,6 +24,7 @@ export default function Shop() {
             } catch (error) {
                 throw new Error(error)
             }
+            progress.end()
         }
         if (objects.length === 0) {
             FetchThings()
