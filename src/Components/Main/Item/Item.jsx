@@ -13,6 +13,7 @@ export default function Item() {
     const [item, SetItem] = useState('')
     const [count, setCount] = useState(location.state.cartCount)
     const [quantity, setQuantity] = useState(1)
+    const [popup, setPopup] = useState(false)
     const progress = new Progress({
         height: 5,
         color: '#33eafd',
@@ -43,6 +44,12 @@ export default function Item() {
                     <img src={Back} height="50px" width="50px"
                         style={{ cursor: "pointer", position: "absolute" }}
                         onClick={() => navigate('/shop', { state: { cartCount: location.state.cartCount, cart: location.state.cart } })}></img>
+                    <div className={`${styles.popup} ${popup && styles.show} ${styles.btn}`}>
+                        <h1>You already have this in Cart</h1>
+                        <button onClick={() => {
+                            setPopup(false)
+                        }}>okay</button>
+                    </div>
                     <main className={styles.main}>
                         <img src={image} height="290px" width="290px" alt={`${title}`} className={styles.img}></img>
                         <h2>{title}</h2>
@@ -58,7 +65,7 @@ export default function Item() {
                                     setCount(location.state.cartCount)
                                 }
                                 else {
-                                    alert("Nope")
+                                    setPopup(true)
                                 }
                             }}>Add To Cart</button>
                         </div>
