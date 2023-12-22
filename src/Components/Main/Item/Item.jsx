@@ -4,6 +4,7 @@ import Header from "../../Header/Header";
 import { useEffect, useState } from "react";
 import Back from "./Assets/back.svg"
 import styles from "./item.module.sass"
+import { Progress } from "rsup-progress";
 
 export default function Item() {
     const location = useLocation()
@@ -12,9 +13,14 @@ export default function Item() {
     const [item, SetItem] = useState('')
     const [count, setCount] = useState(location.state.cartCount)
     const [quantity, setQuantity] = useState(1)
+    const progress = new Progress({
+        height: 5,
+        color: '#33eafd',
+    })
     let navigate = useNavigate()
     useEffect(() => {
         async function FetchItem() {
+            progress.start()
             try {
                 const response = await fetch(`https://fakestoreapi.com/products/${id}`)
                 const json = await response.json();
@@ -23,6 +29,7 @@ export default function Item() {
             } catch (error) {
                 throw new Error(error)
             }
+            progress.end()
         }
         FetchItem();
     }, [])
