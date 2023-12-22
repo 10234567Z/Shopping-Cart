@@ -9,23 +9,28 @@ export default function Router() {
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <Redirect />
+            element: <Redirect />,
+            errorElement: <Error/>
         },
         {
             path: '/home',
-            element: <App />
+            element: <App />,
+            errorElement: <Error/>
         },
         {
             path: '/cart',
-            element: <Cart />
+            element: <Cart />,
+            errorElement: <Error/>
         },
         {
             path: '/shop',
-            element: <Shop />
+            element: <Shop />,
+            errorElement: <Error/>
         },
         {
             path: '/shop/:id/:name',
-            element: <Item />
+            element: <Item />,
+            errorElement: <Error/>
         },
     ])
 
