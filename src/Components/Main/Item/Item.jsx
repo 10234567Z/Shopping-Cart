@@ -30,10 +30,7 @@ export default function Item() {
     const { category, description, image, price, rating, title } = item;
     return (
         <>
-            {loading
-                ?
-                <p>Loading...</p>
-                :
+            {!loading &&
                 <>
                     <Header count={count} cart={location.state.cart} />
                     <img src={Back} height="50px" width="50px"
