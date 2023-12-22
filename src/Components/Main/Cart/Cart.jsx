@@ -12,12 +12,14 @@ export default function Cart() {
             <Header count={location.state.cartCount} cart={location.state.cart} />
             <main className={styles.main}>
                 {location.state.cart.map((el) => (
-                    <div className={`item ${el.id}`} key={`item ${el.id}`}>
+                    <div className={`item ${el.id} ${styles.item}`} key={`item ${el.id}`}>
                         <img src={el.image} width="200px" height="200px"></img>
-                        <h1>{el.title}</h1>
+                        <div className={styles.tWrap}>
+                            <h1>{el.title}</h1>
+                        </div>
                         <h3>${el.price}</h3>
                         <h4>Quantity: {el.quantity}</h4>
-                        <button onClick={() => {
+                        <button className={styles.btn} onClick={() => {
                             location.state.cartCount -= el.quantity;
                             location.state.cart.splice(location.state.cart.findIndex((it) => it.id === el.id) , 1)
                             setReload(Math.random())
