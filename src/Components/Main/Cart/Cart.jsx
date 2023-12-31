@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function Cart() {
     const location = useLocation();
     const [reload, setReload] = useState(0)
+    const total = location.state.cart.reduce((total , item) => total + item.price , 0)
     return (
         <>
             <Header count={location.state.cartCount} cart={location.state.cart} />
@@ -30,7 +31,11 @@ export default function Cart() {
                         : <h1 className={styles.h1}>Nothing here....YET!</h1>
                     }
                 </div>
-                {location.state.cart.length >= 1 && <button className={`${styles.btn} ${styles.check}`}>Checkout</button>}
+                {location.state.cart.length >= 1 && 
+                <>
+                <button className={`${styles.btn} ${styles.check}`}>Checkout Total ${total}</button>
+                </>
+                }
             </main>
             <Footer />
         </>
