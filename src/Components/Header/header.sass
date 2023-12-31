@@ -1,3 +1,23 @@
+@keyframes header
+    0%
+        transform: translateY(-290px)
+        opacity: 0
+
+    25%
+        transform: translateY(-217.5px)
+        opacity: 0.25
+
+    50%
+        transform: translateY(-145px)
+        opacity: 0.5
+
+    75%
+        transform: translateY(-70px)
+
+    100%
+        transform: translateY(0)
+        opacity: 1
+
 header
     padding: 5px
     background-color: #FFFFD7
@@ -8,6 +28,7 @@ header
     position: sticky
     top: 0
     width: 100%
+    animation: header 800ms ease 0s 1 normal forwards
 
 .headLink
     text-decoration: none
