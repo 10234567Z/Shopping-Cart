@@ -19,7 +19,7 @@ export default function Shop() {
             try {
                 const response = await fetch('https://fakestoreapi.com/products')
                 const json = await response.json();
-                setObjects(prevObjs => [...prevObjs, ...json.slice(0, 20)])
+                setObjects(prevObjs => [...prevObjs, ...json.slice(0, 20).filter((item) => item.id !== 10)])
                 setLoading(false)
             } catch (error) {
                 throw new Error(error)
