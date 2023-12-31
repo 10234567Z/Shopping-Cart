@@ -1,3 +1,9 @@
+@keyframes fadeIn
+    15%
+        opacity: 0
+    100%
+        opacity: 1
+
 main
     display: grid
     grid-template-columns: repeat(auto-fill , 300px)
@@ -14,6 +20,8 @@ main
     transition: all 0.3s ease-in-out
     gap: 10px
     font-family: Arial, Helvetica, sans-serif
+    opacity: 0
+    animation: fadeIn 800ms ease 0s 1 normal forwards
 
 .titleWrap
     font-size: 35px
