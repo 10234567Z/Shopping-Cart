@@ -1,3 +1,9 @@
+@keyframes fadeIn
+    15%
+        opacity: 0
+    100%
+        opacity: 1
+
 .mWrap
     display: grid
     grid-template-columns: repeat(auto-fill , 300px)
@@ -21,6 +27,8 @@
     gap: 10px
     font-family: Arial, Helvetica, sans-serif
     height: 400px
+    opacity: 0
+    animation: fadeIn 800ms ease 0s 1 normal forwards
 
 .tWrap
     font-size: 16px
