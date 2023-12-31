@@ -4,6 +4,15 @@
     100%
         opacity: 1
 
+@keyframes slideIn
+    0%
+        transform: translateX(-50px)
+        opacity: 0
+
+    100%
+        transform: translateX(0)
+        opacity: 1
+
 .main
     height: 100%
     display: flex
@@ -27,6 +36,8 @@
     border-radius: 6px
     color: white
     transition: all 0.2s linear
+    opacity: 0
+    animation: slideIn 800ms ease 0s 1 normal forwards
 
 @media (hover:hover)
     .btn:hover
